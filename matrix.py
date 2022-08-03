@@ -37,7 +37,7 @@ class Matrix:
         result_elements = [[0 for i in range(result_columns)] for j in range(result_rows)]
         for i in range(result_rows): 
             for j in range(result_columns):
-                result_elements[i][j] = dot(self.elements[i], other.extract_column(j)) 
+                result_elements[i][j] = dot(self.elements[i], extract_column(other, j)) 
         return Matrix(rows=result_rows, columns=result_columns, elements=result_elements)
 
     
@@ -50,21 +50,3 @@ class Matrix:
             return Matrix(elements=result_elements)
         else: 
             return 
-
-
-    def extract_column(self, column):
-        # Check if legal column
-        num_columns = len(self.elements[0])
-        if num_columns <= column:
-            return 
-        return [row[column] for row in self.elements]
-
-
-    def transpose(self):
-        t_rows = self.columns
-        t_columns = self.rows
-        t_elements = [[0 for i in range(t_columns)] for j in range(t_rows)]
-        for i in range(self.rows): 
-            for j in range(self.columns): 
-                t_elements[j][i] = self.elements[i][j]
-        return Matrix(elements=t_elements)

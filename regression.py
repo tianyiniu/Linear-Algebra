@@ -1,4 +1,5 @@
 from matrix import Matrix
+from matrix_operations import transpose, extract_column
 from cramers import *
 
 # Get list of points
@@ -21,16 +22,12 @@ def least_squares_deg2(coordinates):
     x_values = [point[0] for point in coordinates]
     y_values = [point[1] for point in coordinates]
     coeff_matrix = Matrix(elements=[coeff_row(2, x_value) for x_value in x_values])
-    coeff_transposed = coeff_matrix.transpose()
+    coeff_transposed = transpose(coeff_matrix)
     full_matrix = add_column(coeff_matrix, len(coeff_matrix.elements[0]), y_values)
-
-    #print(coeff_transposed)
-    #print("--------------")
-    #print(full_matrix)
 
     normal = coeff_transposed * full_matrix
     
-    const_terms = normal.extract_column(normal.columns-1)
+    const_terms = extract_column(normal, normal.columns-1)
     normal_coeff = remove_column(normal, normal.columns-1)
 
     solutions = solve_cramers(normal_coeff, const_terms)

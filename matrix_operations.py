@@ -60,6 +60,24 @@ def replace_column(matrix, idx, new_column):
     return Matrix(elements=elements)
 
 
+def extract_column(matrix, column):
+    # Check if legal column
+    num_columns = len(matrix.elements[0])
+    if num_columns <= column:
+        return 
+    return [row[column] for row in matrix.elements]
+
+
+def transpose(matrix):
+    t_rows = matrix.columns
+    t_columns = matrix.rows
+    t_elements = [[0 for i in range(t_columns)] for j in range(t_rows)]
+    for i in range(matrix.rows): 
+        for j in range(matrix.columns): 
+            t_elements[j][i] = matrix.elements[i][j]
+    return Matrix(elements=t_elements)
+
+
 if __name__ == "__main__":
     elements = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
     matrix = Matrix(elements=elements)

@@ -22,3 +22,11 @@ def linspace(start, stop, n):
     """Generates list of n linearly spaced number w.r.t. given interval."""
     step = (stop - start) / n
     return [start + i * step for i in range(n)]
+
+
+def extract_column(matrix, column):
+    # Check if legal column
+    num_columns = len(matrix.elements[0])
+    if num_columns <= column:
+        return 
+    return [row[column] for row in matrix.elements]
