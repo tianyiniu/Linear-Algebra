@@ -1,4 +1,5 @@
 from helper import *
+from exceptions import MultiplicationSizeException
 DECIMAL_DIGITS = 6
 
 class Matrix: 
@@ -29,7 +30,7 @@ class Matrix:
         """Other is B: this gives A * B."""
         # Check if matrix dimensions are correct
         if self.columns != other.rows:
-            return
+            raise MultiplicationSizeException(self, other)
 
         result_rows = self.rows
         result_columns = other.columns
@@ -49,4 +50,4 @@ class Matrix:
                     result_elements[i][j] = other * self.elements[i][j]
             return Matrix(elements=result_elements)
         else: 
-            return 
+            raise TypeError(f"Multiplication not supported between {type(other)} and matrix.") 
