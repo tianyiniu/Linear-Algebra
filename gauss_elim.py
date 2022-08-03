@@ -57,10 +57,3 @@ def gauss_elim(matrix=None):
         pivot_element = matrix.elements[pivot[0]][pivot[1]]
 
     return matrix
-
-
-if __name__ == "__main__":
-    matrix1 = Matrix(elements=[[2, -3, 10, -2], [1, -2, 3, -2], [-1, 3, 1, 4]])
-    matrix2 = Matrix(elements=[[1, -2, 3, -2], [2, -3, 10, -2], [-1, 3, 1, 5]])
-    matrix3 = Matrix(elements=[[1, 0, 1, 2, 7], [2, -1, 3, 1, 2], [3, -1, 4, 3, 9], [1, -1, 2, -1, -5]])
-    print(gauss_elim(matrix2))

@@ -11,3 +11,12 @@ class MultiplicationSizeException(Exception):
             return f"{self.message}\nMatrix incorrect size: Left {Lsize} Right {Rsize}"
         else: 
             return f"Matrix incorrect size: Left {Lsize} Right {Rsize}"
+
+
+class DotProductException(Exception):
+    def __init__(self, vec1, vec2):
+        self.vec1 = vec1
+        self.vec2 = vec2
+    
+    def __str__(self):
+        return f"Dot product undefined, vector different sizes\nLeft: {len(self.vec1)} Right: {len(self.vec2)}"

@@ -1,32 +1,34 @@
+from exceptions import DotProductException
+
 def dot(lst1, lst2):
+    """Returns the dot product between two vectors."""
     if len(lst1) != len(lst2): 
-        print("*** Dot product undefined: Lists are not equal length ***")
-        return 
-    length = len(lst1)
-    return sum([lst1[i] * lst2[i] for i in range(length)])
+        raise DotProductException(lst1, lst2)
+    return sum([lst1[i] * lst2[i] for i in range(len(lst1))])
 
 
-def is_even(num):
+def is_even(num) -> bool:
+    """Check if number is even."""
     return num % 2 == 0
 
 
 def is_square(matrix):
+    """Check if matrix is square."""
     return len(matrix.elements) == len(matrix.elements[0])
 
 
 def square_matrix_size(matrix):
+    """Returns size of square matrix"""
     return len(matrix.elements)
 
 
 def linspace(start, stop, n):
-    """Generates list of n linearly spaced number w.r.t. given interval."""
+    """Generates list of n linearly spaced numbers on given interval."""
     step = (stop - start) / n
     return [start + i * step for i in range(n)]
 
 
-def extract_column(matrix, column):
+def extract_column(matrix, column_idx):
+    """Extract column from matrix."""
     # Check if legal column
-    num_columns = len(matrix.elements[0])
-    if num_columns <= column:
-        return 
-    return [row[column] for row in matrix.elements]
+    return [row[column_idx] for row in matrix.elements]

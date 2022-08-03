@@ -10,10 +10,11 @@ def polynomial(x, coeffs):
 if __name__ == "__main__":
 
     coordinates = [(-1, 2), (0, 1), (1, 2), (2, 3)]
-    coeffs = least_squares_deg2(coordinates)
+    coordinates2 = [(0, 6), (1, 0), (2, 0)]
+    coeffs = least_squares(coordinates2, 1)
 
     # Generates values
-    x = linspace(-5,5,100)
+    x = linspace(-5,5,50)
     y = [polynomial(num, coeffs) for num in x]
 
     # setting the axes at the center

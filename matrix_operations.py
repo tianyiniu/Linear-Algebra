@@ -1,5 +1,6 @@
 from matrix import Matrix
 from copy import deepcopy
+from helper import *
 
 def add_row(matrix, idx, new_row):
     # !Idx may not be valid
@@ -78,7 +79,18 @@ def transpose(matrix):
     return Matrix(elements=t_elements)
 
 
-if __name__ == "__main__":
-    elements = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-    matrix = Matrix(elements=elements)
-    print(remove_column(matrix, 0))
+def determinant(matrix):
+    """Find determinant of matrix. Assumes matrix is square."""
+    matrix_size = square_matrix_size(matrix)
+    if matrix_size == 1:
+        det = matrix.elements[0][0]
+    elif matrix_size == 2:
+        det = matrix.elements[0][0]*matrix.elements[1][1] - matrix.elements[0][1]*matrix.elements[1][0]
+    else: 
+        det = 0
+        first_row = matrix.elements[0] # TODO optimize row/column selection for efficiency
+        for idx, element in enumerate(first_row):
+            sign = 1 if is_even(idx) else -1
+            cofactor_matrix = remove_column(remove_row(matrix, 0), idx)
+            det += sign * element * determinant(cofactor_matrix)
+    return det
