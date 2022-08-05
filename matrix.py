@@ -1,5 +1,5 @@
 from helper import *
-from exceptions import MultiplicationSizeException
+from exceptions import MultiplicationSizeException, NewMatrixSizeException
 DECIMAL_DIGITS = 6
 
 class Matrix: 
@@ -13,6 +13,11 @@ class Matrix:
             self.rows = len(elements)
             self.columns = len(elements[0])
             self.elements = elements
+        
+        # Check if each row has same number of elements
+        for i in range(self.rows):
+            if len(self.elements[i]) != self.rows: 
+                raise NewMatrixSizeException(self)
 
 
     def __str__(self): 

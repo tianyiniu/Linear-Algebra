@@ -20,3 +20,17 @@ class DotProductException(Exception):
     
     def __str__(self):
         return f"Dot product undefined, vector different sizes\nLeft: {len(self.vec1)} Right: {len(self.vec2)}"
+
+
+class NewMatrixSizeException(Exception):
+    def __init__(self, matrix):
+        self.matrix = matrix
+    
+    def __str__(self):
+        return_string = "\n\nMatrix incorrect size:"
+        for i in range(self.matrix.rows):
+            s = ""
+            for _ in range(len(self.matrix.elements[i])):
+                s += "x"
+            return_string += f"\n{s}"
+        return return_string
