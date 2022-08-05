@@ -8,6 +8,7 @@ if __name__ == "__main__":
     coeffs = least_squares(coordinates, 2)
     #deg, coeffs = best_degree(coordinates)
 
+    # TODO Prettier graphing
     # Setting graph axes
     fig = plt.figure()
     ax = fig.add_subplot(1, 1, 1)

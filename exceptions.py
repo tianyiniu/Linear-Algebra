@@ -34,3 +34,11 @@ class NewMatrixSizeException(Exception):
                 s += "x"
             return_string += f"\n{s}"
         return return_string
+
+
+class ZeroDetException(Exception):
+    def __init__(self, matrix):
+        self.matrix = matrix
+    
+    def __str__(self):
+        return f"Determinant of matrix if zero.\n{self.matrix}"

@@ -1,9 +1,10 @@
 from matrix import Matrix
 from matrix_operations import * 
 from helper import *
+from exceptions import ZeroDetException
 
 def solve_cramers(coef_matrix, const_terms):
-    """Uses Cramer's rule to solve a system of linear equations. Returns a list of solutions if solvable, empty list otherwise."""
+    """Uses Cramer's rule to solve a system of linear equations. Raises ZeroDetException if unsolvable."""
     if not is_square(coef_matrix):
         print("Matrix not square")
         return []
@@ -14,8 +15,7 @@ def solve_cramers(coef_matrix, const_terms):
     detA = determinant(coef_matrix)
     
     if detA == 0: 
-        print("Unsolvable, determinant is zero.")
-        return []
+        raise ZeroDetException(coef_matrix)
     
     solution_set = []
     for i in range(len(const_terms)):

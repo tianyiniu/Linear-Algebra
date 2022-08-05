@@ -3,7 +3,6 @@ from copy import deepcopy
 from helper import *
 
 def add_row(matrix, idx, new_row):
-    # !Idx may not be valid
     """Adds a row to matrix at given index."""
     elements = matrix.elements
     if len(new_row) != len(elements[0]):
@@ -62,6 +61,7 @@ def replace_column(matrix, idx, new_column):
 
 
 def extract_column(matrix, column):
+    """Extract columns at given index."""
     # Check if legal column
     num_columns = len(matrix.elements[0])
     if num_columns <= column:
@@ -70,6 +70,7 @@ def extract_column(matrix, column):
 
 
 def transpose(matrix):
+    """Returns tranposed matrix."""
     t_rows = matrix.columns
     t_columns = matrix.rows
     t_elements = [[0 for i in range(t_columns)] for j in range(t_rows)]

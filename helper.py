@@ -14,7 +14,7 @@ def is_even(num) -> bool:
 
 def is_square(matrix):
     """Check if matrix is square."""
-    return len(matrix.elements) == len(matrix.elements[0])
+    return len(matrix.rows) == len(matrix.columns)
 
 
 def square_matrix_size(matrix):

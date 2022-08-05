@@ -4,7 +4,6 @@ DECIMAL_DIGITS = 6
 
 class Matrix: 
     def __init__(self, rows=None, columns=None, elements=None):
-        # TODO Check if each row in element list has the same number of elements
         if elements == None:
             self.rows = rows
             self.columns = columns
@@ -48,6 +47,7 @@ class Matrix:
 
     
     def __rmul__(self, other):
+        """Defines scalar multiplication of matrices."""
         if type(other) is int or type(other) is float: 
             result_elements = [[0 for i in range(self.columns)] for j in range(self.rows)]
             for i in range(self.rows): 
