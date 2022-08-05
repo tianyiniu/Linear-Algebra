@@ -3,7 +3,7 @@ from matrix_operations import transpose, extract_column
 from cramers import *
 
 def coeff_row(degree, x_value):
-    """Calculates list of coefficients for polynomial of given degree."""
+    """Plugs in x values for polynomial of given degree."""
     coeffs = []
     for i in range(degree):
         coeffs.append(x_value**(degree-i)) # Excludes constant term (degree - i = 0)
@@ -11,17 +11,11 @@ def coeff_row(degree, x_value):
     return coeffs 
 
 
-def polynomial(x, coeffs):
-    """Calculates the value of polynomial with coeffs at given value."""
-    degree = len(coeffs) - 1
-    return sum([coeffs[i] * x**(degree-i) for i in range(len(coeffs))])
-
-
 # y = a^2x + bx + c
 def least_squares(coordinates, degree): 
     "Takes in list of coordinates (tuples). Returns coefficients for best fitting polynomial of given degree."
     # TODO add check to see if enough points
-    # TODO Generalize function for all degree polynomials.
+
     x_values = [point[0] for point in coordinates]
     y_values = [point[1] for point in coordinates]
     coeff_matrix = Matrix(elements=[coeff_row(degree, x_value) for x_value in x_values])
@@ -35,6 +29,12 @@ def least_squares(coordinates, degree):
 
     solutions = solve_cramers(normal_coeff, const_terms)
     return solutions
+
+
+def polynomial(x, coeffs):
+    """Calculates the value of polynomial with coeffs at given value."""
+    degree = len(coeffs) - 1
+    return sum([coeffs[i] * x**(degree-i) for i in range(len(coeffs))])
 
 
 def best_degree(coordinates, deg_start=1, deg_stop=5):
@@ -60,3 +60,4 @@ if __name__ == "__main__":
     coordinates = [(-1, 2), (0, 1), (1, 2), (2, 3)]
     coordinates2 = [(0, 6), (1, 0), (2, 0)]
     print(least_squares(coordinates2, 1))
+    

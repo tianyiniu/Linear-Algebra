@@ -7,6 +7,7 @@ if __name__ == "__main__":
     coordinates = [(-1, 2), (0, 1), (1, 2), (2, 3)]
     coeffs = least_squares(coordinates, 2)
     #deg, coeffs = best_degree(coordinates)
+    print(coeffs)
 
     # TODO Prettier graphing
     # Setting graph axes

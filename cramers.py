@@ -1,7 +1,9 @@
-from matrix import Matrix
+from matrix import DECIMAL_DIGITS, Matrix
 from matrix_operations import * 
 from helper import *
 from exceptions import ZeroDetException
+
+DECIMAL_DIGITS = 5
 
 def solve_cramers(coef_matrix, const_terms):
     """Uses Cramer's rule to solve a system of linear equations. Raises ZeroDetException if unsolvable."""
@@ -20,7 +22,7 @@ def solve_cramers(coef_matrix, const_terms):
     solution_set = []
     for i in range(len(const_terms)):
         sol_matrix = replace_column(coef_matrix, i, const_terms)
-        solution = round(determinant(sol_matrix)/detA, 5)
+        solution = round(determinant(sol_matrix)/detA, DECIMAL_DIGITS)
         solution_set.append(solution)
     return solution_set
 

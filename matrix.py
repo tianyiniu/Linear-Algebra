@@ -15,7 +15,7 @@ class Matrix:
         
         # Check if each row has same number of elements
         for i in range(self.rows):
-            if len(self.elements[i]) != self.rows: 
+            if len(self.elements[i]) != self.columns: 
                 raise NewMatrixSizeException(self)
 
 

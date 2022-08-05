@@ -14,12 +14,12 @@ def is_even(num) -> bool:
 
 def is_square(matrix):
     """Check if matrix is square."""
-    return len(matrix.rows) == len(matrix.columns)
+    return matrix.rows == matrix.columns
 
 
 def square_matrix_size(matrix):
     """Returns size of square matrix"""
-    return len(matrix.elements)
+    return matrix.rows
 
 
 def linspace(start, stop, n):
